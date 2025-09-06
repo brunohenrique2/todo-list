@@ -359,17 +359,6 @@ main {
                             &:hover {
                                 cursor: pointer;
                             }
-
-                            &.checked {
-                                color: var(--color-success);
-                                border: 2px solid var(--color-success);
-
-                                & .check-icon {
-                                    display: block;
-                                    width: 24px;
-                                    height: 24px;
-                                }
-                            }
                         }
                     }
 
@@ -387,6 +376,25 @@ main {
                         }
                     }
 
+                }
+
+                &.checked {
+                    & .task-actions-container {
+                        & .task-btn-checker {
+
+                            & .checkbox-icon {
+                                color: var(--color-success);
+                                border: 2px solid var(--color-success);
+                                transition: all .3s ease-in;
+
+                                & .check-icon {
+                                    display: block;
+                                    width: 24px;
+                                    height: 24px;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
