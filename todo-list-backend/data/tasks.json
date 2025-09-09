@@ -1,0 +1,37 @@
+{
+    "tasks": [
+        {
+            "id": 1,
+            "user_id": 1,
+            "group_id": 0,
+            "tittle": "Dever de casa",
+            "description": "Terminar o trabalho de programação!!!",
+            "status": "pendente",
+            "timeframe": "12/12/2025",
+            "create_date": "",
+            "update_date": ""   
+        },
+        {
+            "id": 2,
+            "user_id": 1,
+            "group_id": 1,
+            "tittle": "Recrutar equipe",
+            "description": "Chamar novos integrantes pra equipe!!!",
+            "status": "pendente",
+            "timeframe": "12/12/2025",
+            "create_date": "",
+            "update_date": ""
+        },
+        {
+            "id": 3,
+            "user_id": 1,
+            "group_id": 2,
+            "tittle": "Arrumar o quarto",
+            "description": "Arrumar minha cama e varrer o chão",
+            "status": "pendente",
+            "timeframe": "12/12/2025",
+            "create_date": "",
+            "update_date": ""
+        }
+    ]
+}
