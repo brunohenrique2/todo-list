@@ -7,6 +7,7 @@ const authUser = require('./src/shared/middlewares/auth');
 const userRouter = require('./src/modules/users/users.routes');
 const tasksRouter = require('./src/modules/tasks/tasks.routes');
 const groupsRouter = require('./src/modules/groups/groups.routes');
+const publicRouter = express.Router()
 
 const corsOptions = {
    origin: function (origin, callback) {
@@ -26,11 +27,15 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 
-app.use(express.json());    
-app.use('/auth',userRouter)
-app.use('/auth',authUser,userRouter);
-app.use('/', authUser, groupsRouter);
-app.use('/', authUser,tasksRouter);
+app.use(express.json());   
+
+publicRouter.use('/users', userRouter)
+
+//ROTAS PUBLICAS
+app.use('/public',publicRouter)
+
+//ROTAS PRIVADAS
+
 app.listen(port,() => {
     console.log(`Servidor rodando em http://localhost:${port}`);
 });

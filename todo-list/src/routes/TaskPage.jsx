@@ -3,6 +3,7 @@ import Sidebar from "../components/Sidebar"
 import Task from "../components/Task"
 import { useEffect, useState } from "react"
 import axios from 'axios'
+import "./css/taskpage.css"
 
 function TaskPage() {
     const [ tasks, setTasks ] = useState([])

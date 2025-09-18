@@ -1,0 +1,76 @@
+.sidebar-container {
+    --complementary-color: rgba(224, 224, 224, 0.78);
+    height: 100%;
+    width: 20%;
+    background-color: var(--quartenary-color);
+    border-right: 10px solid var(--complementary-color);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+    & .sidebar-btn-resize {
+        background-color: transparent;
+        width: 20px;
+        height: 20px;
+        border-radius: 2px;
+        margin: 0px -90% 10px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & .sidebar-resize-icon {
+            width: 18px;
+            height: 18px;
+        }
+    }
+
+    & .perfil-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 0px 0px 40px 0px;
+        gap: 5px;
+
+        & .perfil-image {
+            width: 100px;
+            height: 100px;
+            background-image: url("../src/assets/perfil-image.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border: 5px solid var(--secundary-color);
+            border-radius: 10px;
+        }
+
+        & .perfil-name {
+            font-weight: 800;
+
+        }
+    }
+
+    & .tasks-groups-container {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        & .task-group {
+            width: 60px;
+            height: 60px;
+            background-color: var(--secundary-color);
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            & .task-group-icon {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+}

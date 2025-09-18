@@ -1,4 +1,4 @@
-import { useState } from "react"
+import "./css/task.css"
 
 function Task( { id, tittle, group_name, description, timeframe, status, onChangeStatus, onDelTask } ) {
     return (

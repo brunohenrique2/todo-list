@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
@@ -15,37 +9,36 @@ datasource db {
 }
 
 model User {
-  id  Int @id @default(autoincrement())
-  name String 
-  email String @unique
-  password String
-  task Tasks[]
+  id         Int          @id @default(autoincrement())
+  name       String
+  email      String       @unique
+  password   String
   groupTasks GroupTasks[]
-
+  task       Tasks[]
 }
 
-model Tasks{
-  id Int @id @default(autoincrement())
-  name String
+model Tasks {
+  id        Int        @id @default(autoincrement())
+  name      String
   descricao String?
-  status Boolean
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  creator User @relation(fields: [creatorId], references: [id], onDelete: Cascade)
-  group GroupTasks @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  status    Boolean
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
   creatorId Int
-  groupId Int
+  groupId   Int
+  creator   User       @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  group     GroupTasks @relation(fields: [groupId], references: [id], onDelete: Cascade)
 
   @@index([creatorId])
   @@index([groupId])
-  }
+}
 
-model GroupTasks{
-  id Int @id @default(autoincrement())
-  name String
-  tasks Tasks[]
-  creator User @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+model GroupTasks {
+  id        Int     @id @default(autoincrement())
+  name      String
   creatorId Int
+  creator   User    @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  tasks     Tasks[]
 
   @@index([creatorId])
 }
