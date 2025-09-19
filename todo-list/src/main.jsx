@@ -5,6 +5,8 @@ import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import HomePage from './routes/HomePage.jsx'
 import TaskPage from './routes/TaskPage.jsx'
+import RegisterPage from './routes/RegisterPage.jsx'
+import LoginPage from './routes/LoginPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -14,6 +16,14 @@ const router = createBrowserRouter([
   {
     path: "tasks",
     element: <TaskPage />
+  },
+  {
+    path: "/register",
+    element: <RegisterPage/>
+  },
+  {
+   path: "/login",
+   element: <LoginPage/> 
   }
 ])
 
