@@ -1,21 +1,22 @@
-.register-background {
+.login-background {
     background-image: url("../../assets//background-light-3.jpg");
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.register-container{
+.login-container{
     background-color: transparent;
     backdrop-filter: blur(20px);
     width: 60vw;
     height: 70vh;
     display: flex;
+    flex-flow: row-reverse nowrap;
     border: 2px solid rgb(255, 255, 255, .6);
     border-radius: 20px;
 }
 
-.register-form {
+.login-form {
     width: 60%;
     height: 100%;
     display: flex;
@@ -26,7 +27,7 @@
     
 }
 
-.register-form-tittle {
+.login-form-tittle {
     color: white;
     font-weight: 800;
 }

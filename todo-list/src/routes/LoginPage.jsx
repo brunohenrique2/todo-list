@@ -2,6 +2,7 @@ import useAuthStore from "../store/useAuthStore";
 import { useState, useEffect} from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import './css/loginpage.css'
 
 export default function RegisterPage() {
   const [email, setEmail] = useState('');
@@ -47,19 +48,22 @@ export default function RegisterPage() {
 
 
   return (
-      <section className="container">
-        <form onSubmit={handleSubmit}>
-          <h2>Login</h2>
-          <div className="email">
-            <input type="email" placeholder="Digite seu email" name="email" id="email" value={email} onChange={handleChange} required/>
+    <main className="login-background">
+      <section className="login-container">
+        <form className="login-form" onSubmit={handleSubmit}>
+          <h2 className="login-form-tittle">Login</h2>
+          <div className="form-input-container email">
+            <input className="form-input" type="email" placeholder="Digite seu email" name="email" id="email" value={email} onChange={handleChange} required/>
           </div>
-          <div className="password">
-            <input type="password" placeholder="Crie sua senha" name="password" id="password" value={password} onChange={handleChange} required/>
+          <div className="form-input-container password">
+            <input className="form-input" type="password" placeholder="Crie sua senha" name="password" id="password" value={password} onChange={handleChange} required/>
           </div>
-            <button type="submit" disabled={isLoading} >Entrar</button>
-            {error && <p>{error}</p>}
+          <button className="form-btn-submit" type="submit" disabled={isLoading} >Entrar</button>
+          {error && <p>{error}</p>}
+          <Link className="form-link-login" to="/register">Ainda não tem conta?</Link>
         </form>
-          <Link id="link" to="/register">Ainda não tem conta?</Link>
+        <div className="aside-image"></div>
       </section>
+    </main>
   )
 }

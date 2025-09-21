@@ -8,16 +8,20 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    transition: all .3s ease-in;
     
     & .sidebar-btn-resize {
         background-color: transparent;
-        width: 20px;
-        height: 20px;
-        border-radius: 2px;
+        width: 24px;
+        height: 24px;
         margin: 0px -90% 10px 0px;
         display: flex;
         justify-content: center;
         align-items: center;
+
+        &:hover {
+            cursor: pointer;
+        }
 
         & .sidebar-resize-icon {
             width: 18px;
@@ -31,7 +35,7 @@
         flex-direction: column;
         margin: 0px 0px 40px 0px;
         gap: 5px;
-
+        
         & .perfil-image {
             width: 100px;
             height: 100px;
@@ -41,36 +45,109 @@
             background-size: cover;
             border: 5px solid var(--secundary-color);
             border-radius: 10px;
+            transform: scale(1);
+            transition: all .3s ease-in;
         }
 
         & .perfil-name {
             font-weight: 800;
+            white-space: nowrap;
 
         }
     }
 
     & .tasks-groups-container {
+        width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 40px;
+        gap: 20px;
+
+        & .new-group-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: .85rem;
+
+            &:hover {
+                --main-color: rgba(127, 211, 224, 0.3);
+                background-color: var(--main-color);
+                cursor: pointer;
+            }
+        }
 
         & .task-group {
-            width: 60px;
-            height: 60px;
-            background-color: var(--secundary-color);
-            border-radius: 5px;
+            --main-color: rgba(127, 211, 224, 0.3);
             display: flex;
-            justify-content: center;
             align-items: center;
+            gap: 10px;
+            width: 100%;
+            height: 45px;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: .85rem;
+            transition: all .3s ease-in;
 
             &:hover {
                 cursor: pointer;
+                background-color: var(--main-color);
             }
 
             & .task-group-icon {
-                width: 30px;
-                height: 30px;
+                width: 24px;
+                height: 24px;
             }
+
+            & .task-label {
+                opacity: 1;
+                white-space: nowrap;
+                transform: translateX(0);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+        }
+    }
+
+    &.clossed {
+        width: 6%;
+
+        & .sidebar-btn-resize {
+            margin: 0px 0px 10px 0px;
+            width: 24px;
+        }
+
+        & .perfil-image {
+            width: 50px;
+            height: 50px;
+        }
+
+        & .perfil-name {
+            display: none;
+            opacity: 0;
+            transform: translate(-10px);
+        }
+
+        & .new-group-btn {
+            gap: 0;
+            justify-content: center;
+
+            & .new-group-label {
+                display: none;
+            }
+
+        }
+
+
+        & .task-group {
+            width: auto;
+            gap: 0;
+            justify-content: center;
+        }
+
+        & .task-label {
+            display: none;
+            opacity: 1;
+            transform: translate(-10px);
         }
     }
 }
