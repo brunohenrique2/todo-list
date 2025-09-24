@@ -1,6 +1,24 @@
 const prisma = require('../../../prisma/prima');
 const groupsData = require('../../generated/prisma');
 
+class GroupTaskService {
+    async create(name, creatorId) {
+        try {
+            const newGroup = await prisma.groupTasks.create({
+                data: {
+                    name,
+                    creatorId
+                }
+            });
+            return {group: newGroup}
+        } catch (error) {
+            throw error;
+        } 
+    }
+
+    async 
+}
+
 exports.createGroups = async (name, creatorId) => {
     try {
         const newGroup = await prisma.groupTasks.create({
@@ -17,7 +35,7 @@ exports.createGroups = async (name, creatorId) => {
 
 exports.listGroup = async () => {
     try {
-        const groupd = await prisma.groupTasks.findMany({
+        const groups = await prisma.groupTasks.findMany({
         select: {
             name: true, 
             tasks: {
@@ -32,7 +50,7 @@ exports.listGroup = async () => {
             },
         },
     })
-    return {groupd};
+    return {groups};
     } catch (error) {
         throw error;
     }

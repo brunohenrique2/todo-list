@@ -45,6 +45,16 @@ class UserController {
         }
     }
 
+    getUserByEmail = async (req, res) => {
+        try {
+            const userEmail = req.body.email
+            const user = await this.userAuth.findByEmail()
+            
+        } catch (error) {
+            
+        }
+    }
+
     getAllUsers = async (req, res) => {
         try {
             const result = await userService.getUsers();

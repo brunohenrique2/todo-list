@@ -2,7 +2,7 @@ import Searchbar from "../components/Searchbar"
 import Sidebar from "../components/Sidebar"
 import Task from "../components/Task"
 import { useEffect, useState } from "react"
-import axios from 'axios'
+import {privateApi} from '../service/api'
 import "./css/taskpage.css"
 
 function TaskPage() {
@@ -13,7 +13,7 @@ function TaskPage() {
     
     useEffect(() => {
         const getTasks = async () => {
-            const res = await axios.get("http://localhost:3000/tasks")
+            const res = await privateApi.get("/tasks")
             setTasks(res.data.tasks)
         }
         getTasks()

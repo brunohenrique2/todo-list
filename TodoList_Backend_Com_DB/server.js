@@ -3,11 +3,12 @@ const express = require("express");
 const port = process.env.PORT || 3000;
 const app = express();
 const cors = require('cors');
-const authUser = require('./src/shared/middlewares/auth');
 const userRouter = require('./src/modules/users/users.routes');
 const tasksRouter = require('./src/modules/tasks/tasks.routes');
 const groupsRouter = require('./src/modules/groups/groups.routes');
+const authenticateToken = require('./src/shared/middlewares/auth');
 const publicRouter = express.Router()
+const privateRouter = express.Router()
 
 const corsOptions = {
    origin: function (origin, callback) {
@@ -20,7 +21,7 @@ const corsOptions = {
        }
    },
    credentials: true,
-   methods: ['GET','POST', 'PUT', 'DELETE'],
+   methods: ['GET','POST', 'PUT', 'DELETE', 'OPTIONS'],
    allowedHeaders: ['Content-Type','Authorization', 'X-correlation-id', 'origin']
 }
 
@@ -29,14 +30,17 @@ app.use(cors(corsOptions));
 
 app.use(express.json());   
 
-publicRouter.use('/users', userRouter)
 
 //ROTAS PUBLICAS
+publicRouter.use('/users', userRouter)
 app.use('/public',publicRouter)
 
 //ROTAS PRIVADAS
+privateRouter.use('/tasks', authenticateToken, tasksRouter)
+privateRouter.use('/groups', authenticateToken, groupsRouter)
+app.use('/private', privateRouter)
 
-app.listen(port,() => {
+app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
 });
 

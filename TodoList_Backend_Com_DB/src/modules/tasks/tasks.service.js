@@ -1,6 +1,12 @@
 const prisma = require('../../../prisma/prima');
 const dataTasks = require('../../generated/prisma');
 
+class TaskService {
+    async create({name, descricao, status, creatorId, groupId}) {
+        
+    }
+}
+
 const createTask =  async ({name, descricao, status, creatorId, groupId}) => {
     try {
         
@@ -49,6 +55,14 @@ const listTasks = async (taskId) => {
     }
 }
 
+const getAllTasksByUser = async (userId) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
 const updateTasks = async (taskId,{name,descricao,status}) => {
     try {
         const updateTask = await prisma.tasks.update({
@@ -81,6 +95,7 @@ const deleteTasks = async (taskId) => {
 
 module.exports = {
     createTask,
+    getAllTasksByUser,
     listTasks,
     updateTasks,
     deleteTasks

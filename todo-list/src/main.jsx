@@ -7,19 +7,20 @@ import HomePage from './routes/HomePage.jsx'
 import TaskPage from './routes/TaskPage.jsx'
 import RegisterPage from './routes/RegisterPage.jsx'
 import LoginPage from './routes/LoginPage.jsx'
+import ProtectedRoute from './routes/ProtectedRoute.jsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />
+    element: <ProtectedRoute><HomePage /></ProtectedRoute>
   },
   {
-    path: "tasks",
-    element: <TaskPage />
+    path: "/tasks",
+    element: <ProtectedRoute><TaskPage /></ProtectedRoute>
   },
   {
     path: "/register",
-    element: <RegisterPage/>
+    element: <RegisterPage />
   },
   {
    path: "/login",
