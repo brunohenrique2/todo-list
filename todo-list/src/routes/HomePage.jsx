@@ -44,6 +44,7 @@ function HomePage() {
     <main>
       <Sidebar />
       <div className="home-main-content">
+        <p className="welcome-display">{`Bem-vindo de volta, ${userData.name}!`}</p>
         <h2>Dashboard</h2>
         <div className="dashboard-cards">
           <Card title="Total de Tarefas" number={tasks.length} />
