@@ -1,8 +1,10 @@
 import "./css/task.css"
+import { Link } from "react-router-dom"
 
-function Task( { id, tittle, group_name, description, timeframe, status, onChangeStatus, onDelTask } ) {
+function Task({ id, tittle, group_name, description, timeframe, status, onChangeStatus, onDelTask }) {
+
     return (
-        <div key={id} className={`task-container ${status === "concluido" ? "checked" : ""}`}>
+        <div key={id} className={`task-container ${status === true ? "checked" : ""}`}>
             <div className="task-content">
                 <div className="task-header">
                     <span className="task-tittle">
@@ -14,7 +16,7 @@ function Task( { id, tittle, group_name, description, timeframe, status, onChang
                         </span>
                     </div>
                     <div className="task-display-info taks-time">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock-icon lucide-clock"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock-icon lucide-clock"><path d="M12 6v6l4 2" /><circle cx="12" cy="12" r="10" /></svg>
                         <span>
                             {timeframe}
                         </span>
@@ -25,21 +27,30 @@ function Task( { id, tittle, group_name, description, timeframe, status, onChang
                 </p>
             </div>
             <div className="task-actions-container">
-                <label 
+                <label
                     className="task-actions task-btn-checker">
-                    <input 
-                        type="checkbox" 
+                    <input
+                        type="checkbox"
                         name="task-completed"
-                        onClick={() => onChangeStatus(id)}
+                        onClick={() => onChangeStatus(id, !status)}
                     />
                     <span className="checkbox-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check check-icon"><path d="M20 6 9 17l-5-5"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check check-icon"><path d="M20 6 9 17l-5-5" /></svg>
                     </span>
                 </label>
-                <div 
+                <div
+                    className="task-actions task-btn-edit"
+                >
+                    <Link to={`edit/${id}`}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-line-icon lucide-pencil-line"><path d="M13 21h8"/><path d="m15 5 4 4"/><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/></svg>
+                    </Link>
+
+                </div>
+                <div
                     className="task-actions task-btn-delete"
-                    onClick={() => onDelTask(id)}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-icon lucide-trash"><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                    onClick={() => onDelTask(id)}
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-icon lucide-trash"><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /><path d="M3 6h18" /><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg>
                 </div>
             </div>
         </div>

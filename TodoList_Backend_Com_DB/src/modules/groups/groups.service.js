@@ -37,6 +37,7 @@ exports.listGroup = async () => {
     try {
         const groups = await prisma.groupTasks.findMany({
         select: {
+            id: true,
             name: true, 
             tasks: {
                 select: {

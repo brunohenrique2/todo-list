@@ -8,23 +8,33 @@ import TaskPage from './routes/TaskPage.jsx'
 import RegisterPage from './routes/RegisterPage.jsx'
 import LoginPage from './routes/LoginPage.jsx'
 import ProtectedRoute from './routes/ProtectedRoute.jsx'
+import AddTaskPage from './routes/AddTaskPage.jsx'
+import EditTaskPage from './routes/EditTaskPage.jsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <ProtectedRoute><HomePage /></ProtectedRoute>
+    element: <ProtectedRoute><HomePage/></ProtectedRoute>
   },
   {
     path: "/tasks",
-    element: <ProtectedRoute><TaskPage /></ProtectedRoute>
+    element: <ProtectedRoute><TaskPage/></ProtectedRoute>
   },
   {
     path: "/register",
-    element: <RegisterPage />
+    element: <RegisterPage/>
   },
   {
    path: "/login",
    element: <LoginPage/> 
+  },
+  {
+    path: "/tasks/add",
+    element: <ProtectedRoute><AddTaskPage/></ProtectedRoute>
+  },
+  {
+    path: "/tasks/edit/:taskId",
+    element: <ProtectedRoute><EditTaskPage/></ProtectedRoute>
   }
 ])
 

@@ -7,15 +7,13 @@ class TaskService {
     }
 }
 
-const createTask =  async ({name, descricao, status, creatorId, groupId}) => {
+const createTask =  async ({name, descricao, creatorId, groupId}) => {
     try {
-        
-        const idGroup = await prisma.groupTasks.findUnique({where:{id: groupId} })
         const newTask = await prisma.tasks.create({
             data: {
                 name,
                 descricao,
-                status,
+                status: false,
                 creator:{
                     connect:{
                         id: creatorId
@@ -23,7 +21,7 @@ const createTask =  async ({name, descricao, status, creatorId, groupId}) => {
                 },
                 group: {
                     connect:{
-                        id: idGroup.id
+                        id: groupId
                     }
                 }
             }
@@ -55,11 +53,17 @@ const listTasks = async (taskId) => {
     }
 }
 
-const getAllTasksByUser = async (userId) => {
+const getAllTasksByUser = async (creatorId) => {
     try {
-        
+        const result = await prisma.tasks.findMany({
+            where: {
+                creatorId: creatorId
+            }
+        })
+
+        return result
     } catch (error) {
-        
+        throw error
     }
 }
 
